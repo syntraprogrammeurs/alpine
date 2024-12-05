@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>Productconfigurator</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap Icons -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+<body class="bg-light">
+<div x-data="{
+tasks: [],
+newTask: '',
+
+addTask() {
+if (this.newTask) {
+this.tasks.push({ text: this.newTask, completed: false }); this.newTask = ''; }
+},
+
+toggleComplete(index) { this.tasks[index].completed = !this.tasks[index].completed; },
+
+removeTask(index) { this.tasks.splice(index, 1); } }">
+	<h1 class="text-center mb-4">Takenbeheer</h1>
+	<div class="input-group mb-4"><input class="form-control" placeholder="Nieuwe taak..." type="text"
+	                                     x-model="newTask"/>
+		<button @click="addTask()" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Voeg Toe</button>
+	</div>
+	<ul class="list-group">
+		<template :key="index" x-for="(task, index) in tasks">
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				<div>
+					<input @click="toggleComplete(index)" class="form-check-input me-2" type="checkbox"
+				            x-model="task.completed"/> <span
+						:class="task.completed ? 'text-decoration-line-through' : ''" x-text="task.text"></span></div>
+				
+				<button @click="removeTask(index)" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i>
+					Verwijderen
+				</button>
+			</li>
+		</template>
+	</ul>
+</div>
+
+</body>
+</html>

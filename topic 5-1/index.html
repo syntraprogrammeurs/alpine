@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>Productconfigurator</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap Icons -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-light">
+<div x-data="{show : false}">
+	<button class="btn btn-success" @click="show = !show">
+		<i class="bi bi-eye">Toggle Animatie</i>
+	</button>
+	<div class="alert alert-success mt-3" x-show="show" x-transition>
+		Dit element verschijnt en verdwijnt soepel!
+	</div>
+</div>
+
+</body>
+</html>

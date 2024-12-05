@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>Productconfigurator</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap Icons -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<style>        /* Bootstrap-like fade effect */
+	.fade-enter-active {
+		transition: opacity 5s ease, transform 5s ease;
+	}
+	.fade-leave-active{
+		transition: opacity 1s ease, transform 1s ease;
+	}
+	.fade-enter-from, .fade-leave-to {
+		opacity: 0;
+		/*transform: translateY(500px);*/
+		transform:skew(45deg);
+	}
+	
+	.fade-enter-to, .fade-leave-from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	</style>
+	
+</head>
+<body class="bg-light">
+	<div class="container py-5" x-data="{show: false}">
+		<h1>Alpine.js Animation met Bootstrap</h1>
+		<button class="btn btn-warning" @click="show = !show">
+			<i class="bi bi-list"></i>
+		</button>
+<!--		geanimeerd element-->
+		<div class="alert alert-success mt-3"
+		     x-show="show"
+		     x-transition:enter="fade-enter-active"
+		     x-transition:enter-start="fade-enter-from"
+		     x-transition:enter-end="fade-enter-to"
+		     x-transition:leave="fade-leave-active"
+		     x-transition:leave-start="fade-leave-from"
+		     x-transition:leave-end="fade-leave-to"
+		>
+			Dit element heeft een aangepast overgang
+		</div>
+	</div>
+</body>
+</html>
